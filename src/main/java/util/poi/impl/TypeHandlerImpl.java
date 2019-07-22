@@ -2,8 +2,6 @@ package util.poi.impl;
 import org.apache.poi.hssf.usermodel.HSSFDateUtil;
 import org.apache.poi.ss.usermodel.Cell;
 import util.poi.TypeHandler;
-
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class TypeHandlerImpl implements TypeHandler {

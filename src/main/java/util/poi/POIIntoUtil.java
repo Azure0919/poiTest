@@ -1,9 +1,16 @@
 package util.poi;
 import com.sun.media.sound.InvalidFormatException;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.*;
 import util.poi.impl.TypeHandlerImpl;
+
+import javax.swing.filechooser.FileSystemView;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
@@ -60,6 +67,41 @@ public class POIIntoUtil {
         }
         return result;
     }
+
+    /**
+     * 导出excel文件
+     */
+    public static void createExcel() throws IOException{
+        // 获取桌面路径
+        FileSystemView fsv = FileSystemView.getFileSystemView();
+        String desktop = fsv.getHomeDirectory().getPath();
+        String filePath = desktop + "/模板.xls";
+
+        File file = new File(filePath);
+        OutputStream outputStream = new FileOutputStream(file);
+        HSSFWorkbook workbook = new HSSFWorkbook();
+        HSSFSheet sheet = workbook.createSheet("Sheet1");
+        HSSFRow row = sheet.createRow(0);
+        row.createCell(0).setCellValue("省");
+        row.createCell(1).setCellValue("市");
+        row.createCell(2).setCellValue("县");
+        row.createCell(3).setCellValue("邮编");
+
+        row.setHeightInPoints(30); // 设置行的高度
+
+        HSSFRow row1 = sheet.createRow(1);
+        row1.createCell(0).setCellValue("湖南省");
+        row1.createCell(1).setCellValue("长沙市");
+        row1.createCell(2).setCellValue("雨花区");
+        row1.createCell(3).setCellValue("422200");
+
+        workbook.setActiveSheet(0);
+        workbook.write(outputStream);
+        outputStream.close();
+    }
+
+
+
 
     /**
      * 读取excl对象数据

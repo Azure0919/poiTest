@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<!-- 配置MyBatis -->
+<configuration>
+
+	<settings>
+		<!-- 启用延迟加载 -->
+		<setting name="lazyLoadingEnabled" value="true"/>
+		<!-- 设置是否积极加载，false -->
+		<setting name="aggressiveLazyLoading" value="false"/>
+		<!-- 开启二级缓存 -->
+		<setting name="cacheEnabled" value="true"/>
+	</settings>
+	
+	<typeAliases>
+		<!-- 扫包，定义该包下的所有类的别名为该类的类名 -->
+		<package name="com.psx"/>
+		
+	</typeAliases>
+	
+	<mappers>
+		<!-- 指定要关联的映射文件 -->
+		<package name="com.psx.dao"/>
+	</mappers>
+</configuration>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+        http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/tx 
+		http://www.springframework.org/schema/tx/spring-tx-4.3.xsd 
+		http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+	  	 
+	<!-- 处理器映射器 基于注解的处理器映射器 -->
+	<!-- 处理器适配器 基于注解的处理器适配器 -->
+	<!-- Spring MVC的注解驱动，帮我们配置了映射器、适配器，还配置了参数绑定以及json格式转换 -->
+	<mvc:annotation-driven/>
+	<!-- 配置SpringMVC不拦截访问静态资源的请求 -->	
+    <mvc:default-servlet-handler/>
+	<!--  处理器 -->
+	<!-- 使用组件扫描器，Spring会扫描指定包下的标注了@Controller的类 进行实例化 -->
+	<context:component-scan base-package="com.psx.controller"></context:component-scan>
+	
+	<!-- 视图解析器 -->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<!-- 配置视图的后缀名 -->
+		<property name="suffix" value=".jsp"></property>
+		<!-- 配置视图的前缀名 -->
+		<property name="prefix" value="/WEB-INF"></property>
+	</bean>
+	
+</beans>    
